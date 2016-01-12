@@ -46,7 +46,7 @@ catalogApp.controller('profileCtrl', ['$scope','$auth','$modal','$http','userSer
 			description: 'desc',
 			owner_id: $auth.getPayload().sub,
 			category_name: 'test category',
-			image: ''
+			// image: ''
 		};
 
 		userService.getUser($auth.getPayload().sub).then(function(data){

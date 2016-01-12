@@ -80,7 +80,7 @@ def new_item():
         session.add(categ)
         session.commit()
     #create new item and persist it
-    newItem = CatalogItem(name = request.json['name'], price=request.json['price'], description=request.json.get('description',""), owner_id=request.json['owner_id'], image=request.json['image'],category_id=categ.id)
+    newItem = CatalogItem(name = request.json['name'], price=request.json['price'], description=request.json.get('description',""), owner_id=request.json['owner_id'],category_id=categ.id)
     session.add(newItem)
     session.commit()
     session.close()

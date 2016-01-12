@@ -82,14 +82,30 @@ class CatalogItem(Base):
 	description = Column(String(255))
 	category_id = Column(Integer, ForeignKey('categories.id'))
 	owner_id = Column(Integer, ForeignKey('users.id'))
-	image = Column(LargeBinary)
+	# image = Column(LargeBinary)
 	category = relationship(Category)
 	user = relationship(User)
+
+	def __init__(self, name=None, price=None, description=None, category_id=None,
+	 owner_id=None, image=None):
+		if name:
+			self.name = name
+		if price:
+			self.price = price
+		if description:
+			self.description = description
+		if category_id:
+			self.category_id = category_id
+		if owner_id:
+			self.owner_id = owner_id
+		# if image:
+		# 	self.image = image
+
 
 	def to_json(self):
 		return dict(id=self.id, name=self.name, price=self.price, 
 			description=self.description, category_id=self.category_id, 
-			owner_id=self.owner_id, image=self.image)
+			owner_id=self.owner_id)
 
 	def serialize(self):
     	#Returns object data in easily serializable format.
@@ -100,7 +116,7 @@ class CatalogItem(Base):
 	   		'description': self.description,
 	   		'category_id': self.category_id,
 	   		'owner_id': self.owner_id,
-	   		'image': self.image
+	   		# 'image': self.image
 	    }
 
 #run db engine
