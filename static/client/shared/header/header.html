@@ -1,0 +1,34 @@
+<div class="row" style="padding-bottom:5px;">
+
+	<div class="col-sm-12">
+		<a href="" ng-click="go('/')"><img src="http://placehold.it/150x40"></a>
+			<!-- <button type="button" class="btn btn-lg btn-primary" data-animation="am-flip-x" bs-dropdown="dropdown" aria-haspopup="true" aria-expanded="false">Click to toggle dropdown
+			  <br>
+			  <small>(using an object)</small>
+			</button> -->
+
+			<!-- Inlined sibling dropdown -->
+		<button type="button" class="btn btn-sm btn-primary" data-animation="am-flip-x" bs-dropdown aria-haspopup="true" aria-expanded="false">{{selectedCategory.name}} &nbsp;<i class="fa fa-caret-down"></i>
+		  <br>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+		  <li ng-hide="selectedCategory == 'All'"><a href="" ng-click="select({name:'All'})">All</a></li>
+		  <li ng-repeat="category in categories.categories"><a href="" ng-click="select(category)">{{category.name}}</a></li>
+		</ul>
+    	<input type="text" name="main-search" ng-model="q">{{q}}
+    	<button type="button" class="btn btn-sm btn-primary" ng-click="go('/browse/'+selectedCategory.id)"> <i class="fa fa-search"></i></button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<button type="button" class="btn btn-md btn-primary" ng-click="go('/browse')">Browse All Categories</button>
+		<div class="pull-right">
+			<button type="button" class="btn btn-md btn-primary" ng-click="go('/profile')" ng-show="isAuthenticated">Account</button>
+			<button type="button" class="btn btn-md btn-primary" ng-click="logout()" ng-show="isAuthenticated">Logout</button>
+		</div>
+		<button type="button" class="btn btn-md btn-primary pull-right" ng-click="showLogin()" ng-hide="isAuthenticated">Login/Register</button>
+	</div>
+
+</div>
+
+<hr>

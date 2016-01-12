@@ -1,0 +1,56 @@
+<div ng-include src="'/static/client/shared/header/header.html'" ng-controller="headerCtrl"></div>
+
+<div class="row">
+	<div class="col-md-3">
+		<img class="center-block img-circle" ng-src="{{user.picture}}">
+		<h4 class="text-center">Welcome, {{user.name}}!</h4>
+
+		<p class="text-center">{{user.email}}</p>
+	</div>
+	<div class="col-md-9">
+		<!-- <button type="button" class="btn btn-lg btn-danger" data-animation="am-fade-and-slide-top" data-template-url="/static/client/components/profile/new_item_form.html" bs-modal="modal">Add New Listing
+	      <br />
+	    </button> -->
+		<button type="button" class="btn btn-lg btn-danger" ng-click="showModal()">Add New Listing
+		</button>
+		
+		<button type="button" class="btn btn-sm btn-primary pull-right" data-animation="am-flip-x" bs-dropdown aria-haspopup="true" aria-expanded="false">Sort | <i class="fa fa-caret-down"></i>
+		  <br>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+		  <li ng-hide="selectedCategory == 'All'"><a href="" ng-click="select({name:'All'})">All</a></li>
+		  <li ng-repeat="category in ['TBI1','TBI2','TBI3']"><a href="" ng-click="select(category)">{{category}}</a></li>
+		</ul> 
+
+		<br/>
+		<hr>
+
+		<h4 class="text-center"><u>My Listings</u></h4>
+		<div ng-repeat="item in myListings" >
+			<div class="row">
+				<div class="col-md-4">
+					<img ng-src="{{item.image}}" width="80%"/>
+				</div>
+				<div class="col-md-8">
+					<span>Item Name: {{item.name}}</span> 
+					<span class="pull-right">
+					<button type="button" class="btn btn-sm btn-warning" ng-click="showEditModal(item.id)"><i class="fa fa-pencil-square-o"></i>
+					</button>
+					<button type="button" class="btn btn-sm btn-danger" ng-click="delete(item.id)"><i class="fa fa-times-circle-o"></i>
+					</button>
+					</span><br/>
+				</div>
+				
+				<span>Price: {{item.price | currency:"$"}}</span><br/>
+				<span>Description: {{item.description}}</span><br/>
+				<span>Category: {{getCategoryName(item.category_id)}}</span><br/>
+			</div>
+			<hr>
+
+		</div>
+
+	</div>
+
+
+
+</div>

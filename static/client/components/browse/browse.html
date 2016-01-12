@@ -1,0 +1,45 @@
+<div ng-include src="'/static/client/shared/header/header.html'" ng-controller="headerCtrl"></div>
+
+<div class="row">
+	<div class="col-sm-3">	
+		<h3>Categories:</h3>
+		<ul>
+			<li ng-class="{orange: categoryId==category.id}" ng-repeat="category in categories.categories"> 
+				<a href="" ng-click="go('/browse/'+category.id)">{{category.name}}</a>
+			</li>
+		</ul>
+	</div>
+	<div class="col-sm-9">
+		<h3>Items:</h3>
+			<div ng-show="items.length == 0">
+				There are currently no items in the catalog.
+			</div>
+
+			<div ng-show="numItemsWithCurrentCategoryID(categoryId)==0 && items.length > 0 && categoryId!=null">
+				No items currently belong to this category.
+			</div>
+
+			<div ng-show="categoryId==item.category_id || !categoryId" ng-repeat="item in items">
+				<div class="row">
+					<div class="col-md-4">
+						<img ng-src="{{item.image}}" width="80%"/>
+					</div>
+					<div class="col-md-8">
+						<span>Item Name: {{item.name}}</span> 
+						<span class="pull-right" ng-show="item.owner_id == userID">
+							<button type="button" class="btn btn-sm btn-danger" ng-click="go('/profile')"><i class="fa fa-arrow-right"></i>
+							Edit Listing in Profile
+							</button>
+						</span><br/>
+						
+						<span>Price: {{item.price| currency:"$"}}</span><br/>
+						<span>Description: {{item.description}}</span><br/>
+						
+					</div>
+				</div>
+				<hr>
+			</div>
+
+		
+	</div>
+</div>

@@ -1,0 +1,67 @@
+
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="$hide()">&times;</button>
+        <h4 class="modal-title" >Edit Item Listing</h4>
+      </div>
+      <form ng-submit="processEditForm()">
+	      <div class="modal-body">
+	      	<div class="row">
+	      		<div class="col-md-4 text-right">
+	      			Item Name
+	      		</div>
+	      		<div class="col-md-8">
+	      			<input type="text" name="name" value = "" size="30" ng-model="editingItem.name"/></h4>
+	      		</div>
+	      	</div>
+	        <div class="row">
+	      		<div class="col-md-4 text-right">
+	      			Price
+	      		</div>
+	      		<div class="col-md-8">
+	      			<input type="number" name="price" value = "" size="30" ng-model="editingItem.price"/></h4>
+	      		</div>
+	      	</div>
+	      	<div class="row">
+	      		<div class="col-md-4 text-right">
+	      			Description
+	      		</div>
+	      		<div class="col-md-8">
+	      			<input type="text" name="description" value = "" size="30" ng-model="editingItem.description"/></h4>
+	      		</div>
+	      	</div>
+	      	<div class="row">
+	      		<div class="col-md-4 text-right">
+	      			Category
+	      		</div>
+	      		<div class="col-md-8">
+	      			<input type="text" name="image" value = "" size="30" ng-model="editingItem.category_name"/></h4>
+	      		</div>
+	      	</div>
+
+	      	<div class="row">
+	      		<div class="col-md-4 text-right">
+	      			Image:
+	      		</div>
+	      		<div class="col-md-8">
+	      			<input type="file" ng-model="editingItem.image" accept="image/*" app-filereader/>
+	      		</div>
+
+	      	</div>
+	      	
+	      	<div class="row">
+	      		<div class="col-md-12 text-center">
+	      			<img ng-src="{{editingItem.image}}" width="50%"/>
+	      		</div>
+	      	</div>
+	      </div>
+	      <div class="modal-footer">
+	       	<button type="submit" class="btn btn-success">Save</button>
+	        <button type="button" class="btn btn-danger" ng-click="$hide()">Cancel</button>
+	      </div>
+      </form>
+    </div>
+  </div>
+</div>
